@@ -14,6 +14,12 @@ const questions = [
 
 const question = document.getElementById("question");
 const optionsDiv = document.getElementById("options");
+let score = 0;
+
+const checkAnswer = (selectedOption) => {
+    const correctOption = questions[0].correctAnswer;
+    return correctOption === selectedOption;
+}
 
 const loadQuestion = () => {
     const currentQuestion = questions[0];
@@ -24,8 +30,33 @@ const loadQuestion = () => {
         // create a button
         const button = document.createElement("button");
         button.textContent = option;
+        button.addEventListener("click", (event) => {
+            const isCorrect = checkAnswer(event.target.innerText);
+
+            if (isCorrect === true) {
+                alert("correct answer!");
+                score++;
+                console.log(score)
+            } else {
+                alert(`incorrect. correct answer is ${currentQuestion.correctAnswer}`)
+            }
+
+        })
         optionsDiv.appendChild(button);
     })
 }
 
+
 loadQuestion();
+
+
+// const event = {
+//     prop1 : "value",
+//     prop2 : null,
+//     target : {
+//         name: "button",
+//         innerText: "paris"
+//     }
+// }
+
+// console.log(event.target.innerText)
