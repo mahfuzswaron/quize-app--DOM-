@@ -19,6 +19,9 @@ const questions = [
 
 const question = document.getElementById("question");
 const optionsDiv = document.getElementById("options");
+const quizeContainer = document.getElementById("quiz-container");
+// add result container
+
 let score = 0;
 let currentQuestionIndex = 0;
 
@@ -39,6 +42,13 @@ const checkAnswer = (selectedOption) => {
         loadQuestion();
     } else {
         alert("quize complete");
+
+        // hide quize container
+
+        quizeContainer.style.display = "none";
+
+        // display result container
+        
     }
 
 }

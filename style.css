@@ -8,6 +8,10 @@ body {
     margin: 0;
 }
 
+#result-container{
+    /* hide it */
+}
+
 #quiz-container {
     background-color: #fff;
     padding: 20px;
