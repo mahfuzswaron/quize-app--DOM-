@@ -9,37 +9,54 @@ const questions = [
         options: ["Earth", "Mars", "Jupiter", "Saturn"],
         correctAnswer: "Jupiter"
     },
+    {
+        question: "What is the largest planet in our solar system?",
+        options: ["Earth", "Mars", "Jupiter", "Saturn"],
+        correctAnswer: "Jupiter"
+    },
     // Add more questions as needed
 ];
 
 const question = document.getElementById("question");
 const optionsDiv = document.getElementById("options");
 let score = 0;
+let currentQuestionIndex = 0;
+
 
 const checkAnswer = (selectedOption) => {
-    const correctOption = questions[0].correctAnswer;
-    return correctOption === selectedOption;
+    const currentQuestion = questions[currentQuestionIndex];
+    const correctOption = currentQuestion.correctAnswer;
+
+    if (correctOption === selectedOption) {
+        alert("correct answer!");
+        score++;
+    } else {
+        alert(`incorrect. correct answer is ${currentQuestion.correctAnswer}`)
+    }
+
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        loadQuestion();
+    } else {
+        alert("quize complete");
+    }
+
 }
 
 const loadQuestion = () => {
-    const currentQuestion = questions[0];
+    const currentQuestion = questions[currentQuestionIndex];
+    
     const options = currentQuestion.options;
     question.innerText = currentQuestion.question;
+    optionsDiv.innerHTML = '';
 
     options.forEach((option, index) => {
         // create a button
         const button = document.createElement("button");
         button.textContent = option;
         button.addEventListener("click", (event) => {
-            const isCorrect = checkAnswer(event.target.innerText);
+            checkAnswer(event.target.innerText);
 
-            if (isCorrect === true) {
-                alert("correct answer!");
-                score++;
-                console.log(score)
-            } else {
-                alert(`incorrect. correct answer is ${currentQuestion.correctAnswer}`)
-            }
 
         })
         optionsDiv.appendChild(button);
@@ -48,15 +65,3 @@ const loadQuestion = () => {
 
 
 loadQuestion();
-
-
-// const event = {
-//     prop1 : "value",
-//     prop2 : null,
-//     target : {
-//         name: "button",
-//         innerText: "paris"
-//     }
-// }
-
-// console.log(event.target.innerText)
