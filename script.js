@@ -46,6 +46,14 @@ const checkAnswer = (selectedOption) => {
 
         // display result container
         resultContainer.style.display = "block";
+        
+        // display score
+        resultParagraph.innerText = `Your Score is: ${score}!`;
+
+        // style score paragraph
+        resultParagraph.style.backgroundColor = "#8a2be2";
+        resultContainer.style.padding = "20px";
+
 
     }
 
