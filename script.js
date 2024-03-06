@@ -9,18 +9,16 @@ const questions = [
         options: ["Earth", "Mars", "Jupiter", "Saturn"],
         correctAnswer: "Jupiter"
     },
-    {
-        question: "What is the largest planet in our solar system?",
-        options: ["Earth", "Mars", "Jupiter", "Saturn"],
-        correctAnswer: "Jupiter"
-    },
     // Add more questions as needed
 ];
 
 const question = document.getElementById("question");
 const optionsDiv = document.getElementById("options");
 const quizeContainer = document.getElementById("quiz-container");
-// add result container
+// add result container and paragraph
+const resultContainer = document.getElementById("result-container");
+const resultParagraph = document.getElementById("result");
+
 
 let score = 0;
 let currentQuestionIndex = 0;
@@ -44,18 +42,18 @@ const checkAnswer = (selectedOption) => {
         alert("quize complete");
 
         // hide quize container
-
         quizeContainer.style.display = "none";
 
         // display result container
-        
+        resultContainer.style.display = "block";
+
     }
 
 }
 
 const loadQuestion = () => {
     const currentQuestion = questions[currentQuestionIndex];
-    
+
     const options = currentQuestion.options;
     question.innerText = currentQuestion.question;
     optionsDiv.innerHTML = '';

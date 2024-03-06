@@ -10,6 +10,7 @@ body {
 
 #result-container{
     /* hide it */
+    display: none;
 }
 
 #quiz-container {
